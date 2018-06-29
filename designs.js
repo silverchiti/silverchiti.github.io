@@ -1,36 +1,38 @@
-//variables to get canvas element,height,width
-const c = document.getElementById('pixel_canvas');
-let temph = $("#input_height");
-let tempw = $("#input_width");
+(function() {
+  'use strict';
 
-//An event listener that comes into action when Submit button is clicked .
-$('#input_submit').click(function(e) {
-    e.preventDefault();
-    makeGrid();
-});
+  // set global variables
+  const $colorPicker = document.getElementById("colorPicker");
+  const $sizePicker = document.getElementById("sizePicker");
+  const $table = document.getElementById("pixel_canvas");
 
-let color = $("#colorPicker");
+  // add listener to select grid size
+  $sizePicker.addEventListener('submit', function() {
+    // prevent page refresh on submit
+    event.preventDefault();
 
-//To make the grid pattern makegrid is called whenever button is clicked.
-function makeGrid() {
+    // get input data and draw grid
+    let width = document.getElementById("input_width").value;
+    let height = document.getElementById("input_height").value;
+    makeGrid(width, height);
+  })
 
-    c.innerHTML = '';
-    let height = temph.val();
-    let width = tempw.val();
-
-    //A function which fills color in the cell that was clicked and changes the color.
-    let addEvent = function(cell) {
-        cell.addEventListener('click', function() {
-            cell.style.backgroundColor = color.val();
-        });
-    }
-
-    //An event listener such that whenever any cell is clicked it calls addEvent function and changes it's color.
-    for (let i = 0; i < height; i++) {
-        let row = c.insertRow(i);
-        for (let j = 0; j < width; j++) {
-            let cell = row.insertCell(j);
-            cell.addEventListener('click', addEvent(cell));
+  // Draw grid
+  function makeGrid(width, height) {
+    $table.innerHTML = '';
+    for (let row = 0; row < width; row++) {
+      let newRow = $table.insertRow();
+        for (let cell= 0; cell < height; cell++ ) {
+          // add new cell with listener to change color
+          let newCell = newRow.insertCell();
+          newCell.onclick = changeColor;
         }
     }
-}
+  }
+
+  // change the color of the clicked cell to current color
+  function changeColor() {
+    this.style.background = $colorPicker.value;
+  }
+
+})();
