@@ -14,7 +14,7 @@
     // get input data and draw grid
     let width = document.getElementById("input_width").value;
     let height = document.getElementById("input_height").value;
-    makeGrid(width, height);
+    makeGrid(height, width);
   })
 
   // Draw grid
