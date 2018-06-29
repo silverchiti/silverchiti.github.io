@@ -1,4 +1,4 @@
 # Pixel Art Maker Project 
 
 ## Project Link
-Click [here!](silverchitti.github.io)
+Click [here!](silverchiti.github.io)
