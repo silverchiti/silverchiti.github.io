@@ -18,11 +18,11 @@
   })
 
   // Draw grid
-  function makeGrid(width, height) {
+  function makeGrid(height, width) {
     $table.innerHTML = '';
-    for (let row = 0; row < width; row++) {
+    for (let row = 0; row < height; row++) {
       let newRow = $table.insertRow();
-        for (let cell= 0; cell < height; cell++ ) {
+        for (let cell= 0; cell < width; cell++ ) {
           // add new cell with listener to change color
           let newCell = newRow.insertCell();
           newCell.onclick = changeColor;
